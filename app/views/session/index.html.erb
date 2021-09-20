@@ -1,10 +1,13 @@
 
-<h1>COOHSEP - Deliberação Coletiva</h1>
-<%= form_with url: session_path, html: { class: "form-signin"}, method: :post do |form| %>
-  <div class="mb-3" style="max-width: 300px;">
-    <label for="documento" class="form-label">CPF/CNPJ</label>
-    <input name='documento' type="text" class="form-control" id="documento" >
+<div class="d-flex justify-content-center">
+<div class="cotainer">
+  <h1>COOHSEP - Deliberação Coletiva</h1>
+  <%= form_with url: session_path, html: { class: "text-center"}, method: :post do |form| %>
+    <div class="mb-3">
+      <label for="documento" class="form-label">Digite seu CPF/CNPJ</label>
+      <input name='documento' type="text" class="form-control" id="documento" >
+    </div>
+    <button type="submit" class="btn btn-primary">ENTRAR</button>
+  <% end %>
   </div>
-  <button type="submit" class="btn btn-primary">ENTRAR</button>
-<% end %>
-
+</div>
