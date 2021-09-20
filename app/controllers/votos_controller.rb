@@ -13,8 +13,11 @@ class VotosController < PublicController
     @voto.conteudo = params[:conteudo]
     @voto.justificativa = params[:justificativa]
     @voto.ip = request.remote_ip
-    @voto.save!
-    flash[:notice] = "Voto salvo com sucesso!"
-    redirect_to enquete_path(@enquete), flash: { notice: 'Voto salvo com sucesso!' }
+    if @voto.save
+      flash[:notice] = "Voto salvo com sucesso!"
+      redirect_to enquete_path(@enquete), flash: { notice: 'Voto salvo com sucesso!' }
+    else
+      redirect_to enquete_path(@enquete), flash: { error: 'Seu voto não pode ser salvo' }
+    end
   end
 end
