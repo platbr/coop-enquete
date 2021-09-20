@@ -5,7 +5,7 @@
           <h5 class="card-title  text-center"><%= enquete.nome %></h5>
           <p class="card-text"><%= enquete.descricao %></p>
           <p class="card-text"><small class="text-danger">Finaliza em: <%= I18n.l(enquete.finaliza_em, format: :short_week) %></small></p>
-          <a href="/enquetes/<%= enquete.id %>" class="btn btn-primary">Participar</a>
+          <a href="/enquetes/<%= enquete.id %>" class="btn btn-primary pull-right">Participar</a>
         </div>
       </div>
   <% end%>
