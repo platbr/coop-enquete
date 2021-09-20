@@ -11,11 +11,8 @@
   </head>
 
   <body>
-    <% flash.each do |nome, mensagem| %>
-      <%= content_tag :div, mensagem, class: nome %>
-    <% end %>
-    <% if @current_user %>
     <div class="container">
+    <% if @current_user %>
       <ul class="nav justify-content-center">
         <li class="nav-item">
           <a class="nav-link active" href="/">Inicio</a>
@@ -24,8 +21,9 @@
           <a class="nav-link" href="/logout">Sair (<%= @current_user.short_name %>)</a>
         </li>
       </ul>
+      <% end%>
+      <%= yield %>
+      <%= toastr_flash %>
     </div>
-    <% end%>
-    <%= yield %>
   </body>
 </html>
