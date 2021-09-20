@@ -1,0 +1,20 @@
+<div class="container">
+  <div class="card p-3">
+    <div class="card-body">
+      <h5 class="card-title  text-center"><%= @enquete.nome %></h5>
+      <p class="card-text"><%= @enquete.descricao %></p>
+      <%= form_with url: votos_path, html: { class: "form-voto"}, method: :post do |form| %>
+       <input name='enquete_id' type="hidden" id="enquete_id" value="<%= @enquete.id %>" >
+       <div class="mb-3">
+          <label for="conteudo" class="form-label">Sugestão</label>
+          <input name='conteudo' type="text" class="form-control" id="conteudo" value="<%= @voto.conteudo %>" >
+        </div>
+        <div class="mb-3">
+          <label for="justificativa" class="form-label">Justificativa</label>
+          <textarea name='justificativa' type="text" class="form-control" id="justificativa" rows="10"><%= @voto.justificativa %></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary">SALVAR</button>
+      <% end %>
+    </div>
+  </div>
+</div>

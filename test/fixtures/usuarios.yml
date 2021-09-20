@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  documento: MyString
+  visto_em: 2021-09-11 13:12:56
+  ultimo_ip: MyString
+
+two:
+  documento: MyString
+  visto_em: 2021-09-11 13:12:56
+  ultimo_ip: MyString
