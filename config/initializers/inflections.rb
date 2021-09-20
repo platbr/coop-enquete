@@ -63,4 +63,6 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.irregular 'admin_user', 'admin_users'
   inflect.irregular 'active_admin_comment', 'active_admin_comments'
 
+  inflect.irregular 'Admin User', 'Admin Users'
+
 end
