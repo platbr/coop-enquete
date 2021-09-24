@@ -19,5 +19,5 @@ ActiveAdmin.register Usuario do
     column :ultimo_ip
     actions
   end
-  permit_params :documento
+  permit_params :nome,:tipo_documento,:documento
 end
