@@ -3,6 +3,8 @@
   "private": true,
   "dependencies": {
     "@activeadmin/activeadmin": "^2.9.0",
+    "@babel/preset-typescript": "^7.15.0",
+    "@hotwired/stimulus": "^3.0.0",
     "@popperjs/core": "^2.10.1",
     "@rails/actioncable": "^6.0.0",
     "@rails/activestorage": "^6.0.0",
@@ -18,6 +20,8 @@
   },
   "version": "0.1.0",
   "devDependencies": {
+    "@babel/plugin-transform-typescript": "^7.15.4",
+    "typescript": "^4.4.3",
     "webpack-dev-server": "^4.2.0"
   }
 }

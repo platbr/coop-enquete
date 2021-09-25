@@ -10,6 +10,7 @@ import "channels"
 
 import 'bootstrap';
 global.toastr = require("toastr");
+import "controllers"
 
 Rails.start()
 Turbolinks.start()

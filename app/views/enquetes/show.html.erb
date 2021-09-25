@@ -17,20 +17,23 @@
       <% end %>
     <% end %>
     <% if @enquete.tipo_opcoes? %>
-      <p class="card-text">Você deve escolher <%= @enquete.qtd_votos == 1  ? "#{@enquete.qtd_votos} opção" : "#{@enquete.qtd_votos} opções" %>.</p>
-      <%= form_with url: votos_path, html: { class: "form-voto"}, method: :post do |form| %>
-        <input name='enquete_id' type="hidden" id="enquete_id" value="<%= @enquete.id %>" >
-        <hr>
-        <% @enquete.opcoes.each do |opcao| %>
-          <div class="mb-3">
-            <input name="opcao-<%= opcao.id %>" type="checkbox" id="opcao-<%= opcao.id %>" >
-            <label for="opcao-<%= opcao.id %>"><%= opcao.nome %></label>
-          </div>
-          <p class="text-secondary"><%= opcao.descricao %>
+      <div data-controller="voto" data-voto-maximo-value="<%= @enquete.qtd_votos%>">
+        <p class="card-text">Você deve escolher <%= @enquete.qtd_votos == 1  ? "#{@enquete.qtd_votos} opção" : "#{@enquete.qtd_votos} opções" %>.</p>
+        <%= form_with url: votos_path, html: { class: "form-voto", "data-voto-target" => "form" }, method: :post do |form| %>
+          <input name='enquete_id' type="hidden" id="enquete_id" value="<%= @enquete.id %>" >
           <hr>
+          <% @enquete.opcoes.each do |opcao| %>
+            <div class="mb-3">
+              <input name="opcao-<%= opcao.id %>" type="checkbox" data-voto-target="checkbox" id="opcao-<%= opcao.id %>" >
+              <label for="opcao-<%= opcao.id %>"><%= opcao.nome %></label>
+            </div>
+            <p class="text-secondary"><%= opcao.descricao %>
+            <hr>
+          <% end %>
+          <p class="card-text"><span class="badge-primary" data-voto-target="qtd">0</span> opcões escolhidas de um total de <span class="badge-primary"><%= @enquete.qtd_votos %></span>.</p>
+          <button type="submit" class="btn btn-primary float-end">SALVAR</button>
         <% end %>
-        <button type="submit" class="btn btn-primary float-end">SALVAR</button>
-      <% end %>
+      </div>
     <% end %>
   </div>
 </div>
