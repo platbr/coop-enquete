@@ -2,17 +2,35 @@
   <div class="card-body">
     <h5 class="card-title  text-center"><%= @enquete.nome %></h5>
     <p class="card-text"><%= @enquete.descricao %></p>
-    <%= form_with url: votos_path, html: { class: "form-voto"}, method: :post do |form| %>
-      <input name='enquete_id' type="hidden" id="enquete_id" value="<%= @enquete.id %>" >
-      <div class="mb-3">
-        <label for="conteudo" class="form-label">Sugestão</label>
-        <input name='conteudo' type="text" class="form-control" id="conteudo" value="<%= @voto.conteudo %>" >
-      </div>
-      <div class="mb-3">
-        <label for="justificativa" class="form-label">Justificativa</label>
-        <textarea name='justificativa' type="text" class="form-control" id="justificativa" rows="10"><%= @voto.justificativa %></textarea>
-      </div>
-      <button type="submit" class="btn btn-primary float-end">SALVAR</button>
+    <% if @enquete.tipo_texto_livre? %>
+      <%= form_with url: votos_path, html: { class: "form-voto"}, method: :post do |form| %>
+        <input name='enquete_id' type="hidden" id="enquete_id" value="<%= @enquete.id %>" >
+        <div class="mb-3 form-group">
+          <label for="conteudo" class="form-label">Sugestão</label>
+          <input name="conteudo" type="text" class="form-control" id="conteudo" value="<%= @voto.conteudo %>" >
+        </div>
+        <div class="mb-3">
+          <label for="justificativa" class="form-label">Justificativa</label>
+          <textarea name='justificativa' type="text" class="form-control" id="justificativa" rows="10"><%= @voto.justificativa %></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary float-end">SALVAR</button>
+      <% end %>
+    <% end %>
+    <% if @enquete.tipo_opcoes? %>
+      <p class="card-text">Você deve escolher <%= @enquete.qtd_votos == 1  ? "#{@enquete.qtd_votos} opção" : "#{@enquete.qtd_votos} opções" %>.</p>
+      <%= form_with url: votos_path, html: { class: "form-voto"}, method: :post do |form| %>
+        <input name='enquete_id' type="hidden" id="enquete_id" value="<%= @enquete.id %>" >
+        <hr>
+        <% @enquete.opcoes.each do |opcao| %>
+          <div class="mb-3">
+            <input name="opcao-<%= opcao.id %>" type="checkbox" id="opcao-<%= opcao.id %>" >
+            <label for="opcao-<%= opcao.id %>"><%= opcao.nome %></label>
+          </div>
+          <p class="text-secondary"><%= opcao.descricao %>
+          <hr>
+        <% end %>
+        <button type="submit" class="btn btn-primary float-end">SALVAR</button>
+      <% end %>
     <% end %>
   </div>
 </div>

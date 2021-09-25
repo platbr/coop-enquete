@@ -5,7 +5,7 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
-AdminUser.create!(email: 'admin@exemple.com', password: 'password', password_confirmation: '@Mudar123')
+AdminUser.create!(email: 'admin@example.com', password: '@Mudar123', password_confirmation: '@Mudar123')
 
 enquete1 = Enquete.create!(tipo: 'texto_livre', status: 'publicada', qtd_votos: 1, finaliza_em: 30.days.from_now,
   nome: 'Qual nome você quer dar ao nosso condomínio?', descricao: "Nesta etapa você vai sugerir um nome que posteriormente será votado por todos os cooperados. Caso queira deixe também uma justificativa para sua escolha."
@@ -20,7 +20,7 @@ enquete3 = Enquete.create!(tipo: 'opcoes', status: 'publicada', qtd_votos: 1, fi
 )
 
 Opcao.create!(enquete: enquete3, nome: 'Recanto dos Tucanos', descricao: 'Opção sugerida pelo colega Fulano de Tal, seque um texto sobre o nome.')
-Opcao.create!(enquete: enquete3, nome: 'Recanto das Araras', descricao: 'Opção sugerida pelo colega Fulano de Tal, seque um texto sobre o nome.')
+Opcao.create!(enquete: enquete3, nome: 'Recanto dos Cães', descricao: 'Opção sugerida pelo colega Fulano de Tal, seque um texto sobre o nome.')
 
 dados = [{ nome: 'FULANO DA SILVA', documento: '07018254110'}]
 
