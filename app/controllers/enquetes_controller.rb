@@ -5,10 +5,16 @@ class EnquetesController < PrivateController
 
   def show
     @enquete = Enquete.find(params[:id])
-    @opcoes_escolhidas_ids = Opcao.joins(:votos).where(enquete: @enquete, votos: { usuario_id: current_user.id }).pluck(:id)
-    @opcoes_escolhidas_ids ||= []
-    @voto = Voto.joins(:usuario).where(enquete: @enquete, usuario: current_user).take
-    @voto ||= Voto.new
+    if @enquete.tipo_opcoes?
+      @opcoes_escolhidas_ids = Opcao.joins(:votos).where(enquete: @enquete, votos: { usuario_id: current_user.id }).pluck(:id)
+      @opcoes_escolhidas_ids ||= []
+      @votos_contador = Voto.where(enquete: @enquete).group(:opcao_id).count
+    end
+
+    if @enquete.tipo_texto_livre?
+      @voto = Voto.joins(:usuario).where(enquete: @enquete, usuario: current_user).take
+      @voto ||= Voto.new
+    end
   end
 
   # def create
