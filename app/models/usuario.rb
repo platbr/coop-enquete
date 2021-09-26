@@ -16,7 +16,7 @@ class Usuario < ApplicationRecord
   end
 
   def unique_documento?
-    if Usuario.buscar(documento: documento).any?
+    if Usuario.buscar(documento: documento).where.not(id: id).any?
       errors.add :documento, 'já está em uso por outro usuário.'
 
       return false
