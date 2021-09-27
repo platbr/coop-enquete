@@ -8,6 +8,7 @@ class EnquetesController < PrivateController
     if @enquete.tipo_opcoes?
       @opcoes_escolhidas_ids = Opcao.joins(:votos).where(enquete: @enquete, votos: { usuario_id: current_user.id }).pluck(:id)
       @opcoes_escolhidas_ids ||= []
+      @opcoes = @enquete.opcoes.order(:nome)
       @votos_contador = Voto.where(enquete: @enquete).group(:opcao_id).count
     end
 

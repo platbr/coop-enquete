@@ -23,7 +23,7 @@
           <input name='enquete_id' type="hidden" id="enquete_id" value="<%= @enquete.id %>" >
           <input name='opcoes_escolhidas_ids' type="hidden" id="opcoes_escolhidas_ids" data-voto-target="escolhidas" value="<%= @opcoes_escolhidas_ids %>">
           <hr>
-          <% @enquete.opcoes.each do |opcao| %>
+          <% @opcoes.each do |opcao| %>
             <div class="mb-3">
               <input name="opcao-<%= opcao.id %>" type="checkbox" data-voto-target="checkbox" opcao_id="<%= opcao.id %>" id="opcao-<%= opcao.id %>">
               <label for="opcao-<%= opcao.id %>" class="mh-50"><%= opcao.nome %><span class="badge bg-success mx-2"><%= @votos_contador[opcao.id] || 0 %> Votos</span></label>
