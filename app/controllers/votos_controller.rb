@@ -5,10 +5,10 @@ class VotosController < PublicController
     ActiveRecord::Base.transaction do
       @enquete = Enquete.find(params[:enquete_id])
 
-      if !@enquete.aceita_votos?
+      unless @enquete.aceita_votos?
         return redirect_to enquete_path(@enquete), flash: { error: 'Esta enquete não está aceitando votos.' }
       end
-  
+
       if @enquete.tipo_opcoes?
         opcoes_escolhidas = Opcao.where(enquete: @enquete, id: JSON.parse(params[:opcoes_escolhidas_ids]))
         if opcoes_escolhidas.size > @enquete.qtd_votos
