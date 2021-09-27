@@ -6,7 +6,7 @@ class VotosController < PublicController
       @enquete = Enquete.find(params[:enquete_id])
 
       if !@enquete.aceita_votos?
-        redirect_to enquete_path(@enquete), flash: { error: 'Esta enquete não está aceitando votos.' }
+        return redirect_to enquete_path(@enquete), flash: { error: 'Esta enquete não está aceitando votos.' }
       end
   
       if @enquete.tipo_opcoes?
