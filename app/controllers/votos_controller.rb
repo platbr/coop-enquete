@@ -34,7 +34,7 @@ class VotosController < PublicController
       end
     end
   rescue => e
-    Rails.error(e.message)
-    redirect_to enquete_path(@enquete), flash: { error: 'Seu voto não pode ser salvo' }
+    Rails.logger.error(e.message)
+    redirect_to enquete_path(@enquete), flash: { error: e.message }
   end
 end
