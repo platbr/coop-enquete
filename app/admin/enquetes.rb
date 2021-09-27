@@ -8,12 +8,12 @@ ActiveAdmin.register Enquete do
       input :qtd_votos
       input :finaliza_em
       input :nome
-      input :descricao, as: :quill_editor
+      input :descricao
     end
     f.inputs do
       f.has_many :opcoes, heading: 'Opções', allow_destroy: true, new_record: true do |env|
         env.input :nome
-        env.input :descricao, as: :quill_editor
+        env.input :descricao
       end
     end
 
