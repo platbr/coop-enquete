@@ -34,7 +34,7 @@ class VotosController < PublicController
       end
     end
   rescue => e
-    return redirect_to enquete_path(@enquete), flash: { error: e.message }
     Rails.logger.error(e.message)
+    return redirect_to enquete_path(@enquete), flash: { error: e.message }
   end
 end
