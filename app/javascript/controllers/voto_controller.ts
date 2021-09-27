@@ -49,6 +49,7 @@ export default class extends Controller {
       this.atualizarMostradorDeQtd()
       return;
     }
+    alert('O número máximo de opções já foi escolhido, desmarque outras opções para poder escolher esta.')
     e.preventDefault()
   }
 
