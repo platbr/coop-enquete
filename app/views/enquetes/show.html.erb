@@ -1,7 +1,7 @@
 <div class="card p-3">
   <div class="card-body">
     <h5 class="card-title  text-center"><%= @enquete.nome %></h5>
-    <p class="card-text"><%= @enquete.descricao %></p>
+    <p class="card-text"><%= @enquete.descricao.html_safe %></p>
     <% if @enquete.tipo_texto_livre? %>
       <%= form_with url: votos_path, html: { class: "form-voto"}, method: :post do |form| %>
         <input name='enquete_id' type="hidden" id="enquete_id" value="<%= @enquete.id %>" >
