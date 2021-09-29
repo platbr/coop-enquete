@@ -1,7 +1,7 @@
 class EnquetesController < PrivateController
   def index
-    @enquetes = Enquete.status_concluida.order(:finaliza_em, :asc) if params[:status] == 'concluida'
-    @enquetes ||= Enquete.status_publicada.order(:finaliza_em, :desc)
+    @enquetes = Enquete.status_concluida.order('finaliza_em DESC') if params[:status] == 'concluida'
+    @enquetes ||= Enquete.status_publicada.order('finaliza_em DESC')
   end
 
   def show
